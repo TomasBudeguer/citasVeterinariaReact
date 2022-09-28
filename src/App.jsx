@@ -1,10 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container } from 'react-bootstrap';
+import FormularioCita from './components/FormularioCita';
+import './style.css'
 
 function App() {
   return (
-    <div>
-      <h1>Titulo Prueba</h1>
-    </div>
+    <Container>
+      <h1 className='text-center mt-5'>Administrador pacientes de veterinaria</h1>
+      <hr />
+      <FormularioCita></FormularioCita>
+    </Container>
   );
 }
 
