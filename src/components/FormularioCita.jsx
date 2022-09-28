@@ -1,4 +1,5 @@
 import { Form, Button } from "react-bootstrap";
+import ListaCitas from "./ListaCitas";
 const FormularioCita = () => {
   return (
     <div>
@@ -68,6 +69,7 @@ const FormularioCita = () => {
           </Button>
         </div>
       </Form>
+      <ListaCitas></ListaCitas>
     </div>
   );
 };

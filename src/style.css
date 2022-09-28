@@ -4,4 +4,9 @@ body {
     background: linear-gradient(to right, #E9E4F0, #D3CCE3); 
 }
 
+.bgCard{
+    background-color: #ffffff;
+    background-image: linear-gradient(45deg, #ffffff 0%, #ffffff 16%, #ffffff 26%, #ffffff 89%, #9b82c9 90%, #9b82c9 100%);    
+}
+
 
