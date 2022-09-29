@@ -1,18 +1,44 @@
+import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import ListaCitas from "./ListaCitas";
+
 const FormularioCita = () => {
+  const [mascota, setMascota] = useState("");
+  const [duenio, setDuenio] = useState("");
+  const [fecha, setFecha] = useState("");
+  const [hora, setHora] = useState("");
+  const [sintomas, setSintomas] = useState("");
+  const [arregloCitas, setArregloCitas] = useState([])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let objetoCita = {mascota, duenio, fecha, hora, sintomas}
+    setArregloCitas([...arregloCitas, objetoCita])
+    setMascota('')
+    setDuenio('')
+    setFecha('')
+    setHora('')
+    setSintomas('')
+  }
+  
+
   return (
     <div>
-      <Form className="border border-dark rounded p-3">
+      <Form className="border border-dark rounded p-3" onSubmit={handleSubmit}>
         <h5>Llenar el formulario para crear una cita</h5>
-        <hr className="border border-dark"/>
+        <hr className="border border-dark" />
         <Form.Group className="mb-3" controlId="formBasicMascota">
           <div className="row align-items-center">
             <aside className="col-sm-12 col-md-3 col-lg-2">
               <Form.Label>Nombre de la mascota</Form.Label>
             </aside>
             <aside className="col-sm-12 col-md-9 col-lg-10">
-              <Form.Control type="text" placeholder="Nombre de la mascota" />
+              <Form.Control
+                type="text"
+                placeholder="Nombre de la mascota"
+                onChange={(e) => setMascota(e.target.value)}
+                value={mascota}
+              />
             </aside>
           </div>
         </Form.Group>
@@ -22,7 +48,12 @@ const FormularioCita = () => {
               <Form.Label>Nombre del dueño</Form.Label>
             </aside>
             <aside className="col-sm-12 col-md-9 col-lg-10">
-              <Form.Control type="text" placeholder="Nombre del dueño" />
+              <Form.Control
+                type="text"
+                placeholder="Nombre del dueño"
+                onChange={(e) => setDuenio(e.target.value)}
+                value={duenio}
+              />
             </aside>
           </div>
         </Form.Group>
@@ -34,7 +65,11 @@ const FormularioCita = () => {
                   <Form.Label>Fecha</Form.Label>
                 </aside>
                 <aside className="col-sm-12 col-md-9 col-lg-6">
-                  <Form.Control type="date" />
+                  <Form.Control
+                    type="date"
+                    onChange={(e) => setFecha(e.target.value)}
+                    value={fecha}
+                  />
                 </aside>
               </div>
             </Form.Group>
@@ -46,7 +81,11 @@ const FormularioCita = () => {
                   <Form.Label>Hora</Form.Label>
                 </aside>
                 <aside className="col-sm-12 col-md-9 col-lg-6">
-                  <Form.Control type="time" />
+                  <Form.Control
+                    type="time"
+                    onChange={(e) => setHora(e.target.value)}
+                    value={hora}
+                  />
                 </aside>
               </div>
             </Form.Group>
@@ -58,18 +97,23 @@ const FormularioCita = () => {
               <Form.Label>Sintomas</Form.Label>
             </aside>
             <aside className="col-sm-12 col-md-9 col-lg-10">
-              <Form.Control type="text" placeholder="Describa los sintomas" />
+              <Form.Control
+                type="text"
+                placeholder="Describa los sintomas"
+                onChange={(e) => setSintomas(e.target.value)}
+                value={sintomas}
+              />
             </aside>
           </div>
         </Form.Group>
-        <hr className="border border-dark"/>
+        <hr className="border border-dark" />
         <div className="d-flex justify-content-center">
           <Button variant="secondary" type="submit">
             Agregar nueva cita
           </Button>
         </div>
       </Form>
-      <ListaCitas></ListaCitas>
+      <ListaCitas arregloCitas={arregloCitas}></ListaCitas>
     </div>
   );
 };
