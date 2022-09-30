@@ -27,6 +27,10 @@ const FormularioCita = () => {
     setSintomas('')
   }
   
+  const borrarCita = (cita)=>{
+    let arregloModif = arregloCitas.filter((item)=>(item !== cita))
+    setArregloCitas(arregloModif)
+  }
 
   return (
     <div>
@@ -119,7 +123,7 @@ const FormularioCita = () => {
           </Button>
         </div>
       </Form>
-      <ListaCitas arregloCitas={arregloCitas}></ListaCitas>
+      <ListaCitas arregloCitas={arregloCitas} borrarCita={borrarCita}></ListaCitas>
     </div>
   );
 };
