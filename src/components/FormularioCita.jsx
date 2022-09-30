@@ -3,34 +3,46 @@ import { Form, Button } from "react-bootstrap";
 import ListaCitas from "./ListaCitas";
 
 const FormularioCita = () => {
-  const citasLocalStorage = JSON.parse(localStorage.getItem('arregloCitasKey')) || []
+  const citasLocalStorage =
+    JSON.parse(localStorage.getItem("arregloCitasKey")) || [];
 
   const [mascota, setMascota] = useState("");
   const [duenio, setDuenio] = useState("");
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [sintomas, setSintomas] = useState("");
-  const [arregloCitas, setArregloCitas] = useState(citasLocalStorage)
+  const [arregloCitas, setArregloCitas] = useState(citasLocalStorage);
 
-  useEffect(()=>{
-    localStorage.setItem('arregloCitasKey', JSON.stringify(arregloCitas))
-  },[arregloCitas])
+  useEffect(() => {
+    localStorage.setItem("arregloCitasKey", JSON.stringify(arregloCitas));
+  }, [arregloCitas]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let objetoCita = {mascota, duenio, fecha, hora, sintomas}
-    setArregloCitas([...arregloCitas, objetoCita])
-    setMascota('')
-    setDuenio('')
-    setFecha('')
-    setHora('')
-    setSintomas('')
-  }
-  
-  const borrarCita = (cita)=>{
-    let arregloModif = arregloCitas.filter((item)=>(item !== cita))
-    setArregloCitas(arregloModif)
-  }
+    if (
+      mascota.trim() === "" ||
+      duenio.trim() === "" ||
+      fecha.trim() === "" ||
+      hora.trim() === "" ||
+      sintomas.trim() === ""
+    ) {
+      alert("Completar todos los datos");
+      return;
+    } else {
+      let objetoCita = { mascota, duenio, fecha, hora, sintomas };
+      setArregloCitas([...arregloCitas, objetoCita]);
+      setMascota("");
+      setDuenio("");
+      setFecha("");
+      setHora("");
+      setSintomas("");
+    }
+  };
+
+  const borrarCita = (cita) => {
+    let arregloModif = arregloCitas.filter((item) => item !== cita);
+    setArregloCitas(arregloModif);
+  };
 
   return (
     <div>
@@ -123,7 +135,10 @@ const FormularioCita = () => {
           </Button>
         </div>
       </Form>
-      <ListaCitas arregloCitas={arregloCitas} borrarCita={borrarCita}></ListaCitas>
+      <ListaCitas
+        arregloCitas={arregloCitas}
+        borrarCita={borrarCita}
+      ></ListaCitas>
     </div>
   );
 };
