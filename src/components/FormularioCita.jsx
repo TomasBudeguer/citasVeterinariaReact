@@ -60,6 +60,7 @@ const FormularioCita = () => {
                 placeholder="Nombre de la mascota"
                 onChange={(e) => setMascota(e.target.value)}
                 value={mascota}
+                required
               />
             </aside>
           </div>
@@ -75,6 +76,7 @@ const FormularioCita = () => {
                 placeholder="Nombre del dueño"
                 onChange={(e) => setDuenio(e.target.value)}
                 value={duenio}
+                required
               />
             </aside>
           </div>
@@ -91,6 +93,7 @@ const FormularioCita = () => {
                     type="date"
                     onChange={(e) => setFecha(e.target.value)}
                     value={fecha}
+                    required
                   />
                 </aside>
               </div>
@@ -107,6 +110,7 @@ const FormularioCita = () => {
                     type="time"
                     onChange={(e) => setHora(e.target.value)}
                     value={hora}
+                    required
                   />
                 </aside>
               </div>
@@ -124,6 +128,7 @@ const FormularioCita = () => {
                 placeholder="Describa los sintomas"
                 onChange={(e) => setSintomas(e.target.value)}
                 value={sintomas}
+                required
               />
             </aside>
           </div>
